@@ -10,41 +10,25 @@ const initialState = {
     error: null
 }
 
-//GET
+// GET
 export const fetchPosts = createAsyncThunk('posts/fetchPosts', async () => {
     const response = await axios.get(POSTS_URL)
     return response.data
 })
 
-//POST
+// POST
 export const addNewPost = createAsyncThunk('posts/addNewPost', async (initialPost) => {
     const response = await axios.post(POSTS_URL, initialPost)
     return response.data
 })
 
-//PUT
+// PUT
 export const updatePost = createAsyncThunk('posts/updatePost', async (initialPost) => {
-    console.log(initialPost)
     const { id } = initialPost
     const response = await axios.put(`${POSTS_URL}/${id}`, initialPost)
-    console.log('respose', response)
     return response.data
 })
 
-// DELETE
-export const deletePost = createAsyncThunk('posts/deletePost', async (initialPost) => {
-    // initial post is the post you dispatch
-    // response is the API request and it is not relate to the initialPost with this project, just for comparing
-    const { id } = initialPost
-    const response = await axios.delete(`${POSTS_URL}/${id}`, initialPost)
-    try {
-        if (response.status === 200) return initialPost;
-        return `${response.state} : ${response.statusText}`
-    } catch (error) {
-        console.log(error)
-    }
-
-})
 
 const postsSlice = createSlice({
     name: 'posts',
@@ -126,37 +110,20 @@ const postsSlice = createSlice({
                 action.payload.date = new Date().toISOString();
                 action.payload.reactions = {
                     thumbsUp: 0,
-                    hooray: 0,
+                    wow: 0,
                     heart: 0,
                     rocket: 0,
-                    eyes: 0
+                    coffee: 0
                 }
                 state.posts.push(action.payload)
             })
             .addCase(updatePost.fulfilled, (state, action) => {
-
-                if (!action.payload?.id) {
-                    console.log('Update could not complete')
-                    console.log(action.payload)
-                }
-
                 const { id } = action.payload
                 const posts = state.posts.filter((post) => post.id !== id)
-
-                action.payload.date = new Date().toISOString()
 
                 state.posts = [...posts, action.payload]
-
             })
-            .addCase(deletePost.fulfilled, (state, action) => {
-                if (!action?.payload?.id) {
-                    console.log("the deletion could not proceed")
-                }
-                const { id } = action.payload
-                const posts = state.posts.filter((post) => post.id !== id)
 
-                state.posts = posts
-            })
     }
 })
 
@@ -164,11 +131,8 @@ export const selectAllPosts = (state) => state.posts.posts;
 export const getPostsStatus = (state) => state.posts.status;
 export const getPostsError = (state) => state.posts.error;
 
+export const selectPostById = (state, postId) => state.posts.posts.find((post) => post.id === +postId)
 
-// if the post.id == postId return the post element from the array
-export const selectPostById = (state, postId) =>
-    state.posts.posts.find((post) => post.id === postId)
-// ==
 
 export const { postAdded, reactionAdded } = postsSlice.actions
 
