@@ -32,3 +32,11 @@ const post = posts.find((post) => post.id === postId);
   </Route>
 </Routes>;
 ```
+
+create branch pages using react router for the following:
+
+- create post page => AddPostForm.js /post
+
+- post page => for a single post using react router params hook /post/:postId
+
+- layout page => the whole page container
