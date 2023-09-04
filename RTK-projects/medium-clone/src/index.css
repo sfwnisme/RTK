@@ -1,0 +1,14 @@
+body {
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #242424;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+* {
+  text-decoration: unset;
+  list-style: none;
+}
+
+a {
+  color: rgb(185, 110, 255);
+}

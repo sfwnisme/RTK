@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { selectAllPosts, selectPostById, updatePost } from './postsSlice'
+import { deletePost, selectAllPosts, selectPostById, updatePost } from './postsSlice'
 import { useNavigate, useParams } from 'react-router-dom'
 import { selectAllUsers } from '../users/usersSlice'
 
@@ -54,6 +54,20 @@ const EditPostForm = () => {
     }
   }
 
+  const onDeletePostClicked = () => {
+    try {
+      dispatch(deletePost({ id: post.id }))
+
+
+      setTitle('')
+      setContent('')
+      setUserId('')
+      navigate(`/`)
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
 
   return (
     <form>
@@ -64,6 +78,7 @@ const EditPostForm = () => {
       </select>
       <input type='text' value={content} onChange={handleContent} />
       <button type='button' onClick={onSaveButtonClicked}>Update Post</button>
+      <button type='button' onClick={onDeletePostClicked}>Delete Post</button>
     </form>
   )
 }

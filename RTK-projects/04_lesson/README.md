@@ -40,3 +40,17 @@ create branch pages using react router for the following:
 - post page => for a single post using react router params hook /post/:postId
 
 - layout page => the whole page container
+
+===========================================
+
+create deletion action
+
+- create async action and call the id from the initial post
+
+- return the data of the response
+
+- create addCase extrarReducers
+
+- filter the existing state.posts without the deleted element
+
+- crerate function handles the deletion dispatch
