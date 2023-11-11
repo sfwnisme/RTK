@@ -1,0 +1,97 @@
+.header {
+  margin-bottom: 30px;
+  margin-top: 20px;
+
+}
+
+.header h1 {
+  margin: 20px 0;
+}
+
+.header .nav {
+  height: 50px;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  border: 1px solid rgba(0, 0, 0, 0.125);
+  border-radius: 0.375rem;
+  -webkit-border-radius: 0.375rem;
+  -moz-border-radius: 0.375rem;
+  -ms-border-radius: 0.375rem;
+  -o-border-radius: 0.375rem;
+  padding-inline: 1rem;
+}
+
+.header .nav li {
+  margin-right: 10px;
+}
+
+.header .nav li a {
+  font-size: 16px;
+  text-decoration: none;
+}
+
+/* 
+
+.header .nav li:first-child {
+  margin-left: 5px;
+}
+
+
+
+*/
+
+.login {
+  color: white;
+  font-size: 16px;
+  margin-left: auto;
+}
+
+.post-title {
+  text-decoration: none;
+}
+
+
+.btn-danger,
+.btn-success,
+.btn-primary {
+  background-color: white !important;
+  color: black !important;
+  border-color: rgba(107, 149, 255, 0.499) !important;
+}
+
+.btn-primary:hover {
+  background-color: rgb(107, 174, 255) !important;
+  color: rgb(255, 255, 255) !important;
+  border-color: rgb(56, 94, 221) !important;
+}
+
+.btn-danger:hover {
+  background-color: rgb(255, 107, 107) !important;
+  color: rgb(255, 255, 255) !important;
+  border-color: rgb(221, 56, 56) !important;
+}
+
+.btn-success:hover {
+  background-color: rgb(93, 199, 84) !important;
+  color: rgb(255, 255, 255) !important;
+  border-color: rgb(79, 234, 65) !important;
+}
+
+article h4 {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+article h4 span {
+  font-size: 14px;
+  font-weight: 100;
+}
+
+article p {
+  font-size: 17px;
+  font-weight: 100;
+  line-height: 1.5;
+}
